@@ -242,15 +242,26 @@ console.log(getArtistByIndex(artists, 0))
 
 
 
-function get20s(array) {
+function get20s(n1, n2) {
   let lotsA = [];
-for (i = 0; i <= array.length-1; i++) {
-  if (artists[i].bio == '19'){
-    return lotsA.push(array[i].name);
+for (i = 0; i <= artists.length-1; i++) {
+  if (artists[i].years < n1 && artists[i].years < n2){
+    return lotsA.push(artists[i].name);
   }
   return lotsA
 }
 console.log(lotsA);
+}
+
+function lotsofArt(array) {
+  let lots = [];
+for (i = 0; i <= array.length-1; i++) {
+  if(array[i].paintings =100){
+    lots.push(array[i].name);
+  }
+  return lots
+}
+console.log(lots);
 }
 
 
