@@ -52,7 +52,7 @@ const artists = [
     {
       "id": 5,
       "name": "Salvador Dali",
-      "years": "19 04 - 1989",
+      "years": "1904 - 1989",
       "genre": "Surrealism",
       "nationality": "Spanish",
       "bio": "Salvador Domingo Felipe Jacinto Dalí i Domènech, 1st Marquis of Dalí de Púbol (11 May 1904 – 23 January 1989), known professionally as Salvador Dalí (; Catalan: [səlβəˈðo ðəˈli]; Spanish: [salβaˈðoɾ ðaˈli]), was a prominent Spanish surrealist born in Figueres, Catalonia, Spain.",
@@ -175,7 +175,7 @@ const artists = [
       "years": "1907 - 1954",
       "genre": "Primitivism,Surrealism",
       "nationality": "Mexican",
-      "bio": "Frida Kahlo de Rivera (Spanish pronunciation: [ˈfɾiða ˈkalo]; born Magdalena Carmen Frida Kahlo y Calderón; 6 July 19 07 – 13 July 1954) was a Mexican artist who painted many portraits, self-portraits and works inspired by the nature and artifacts of Mexico. Inspired by the country's popular culture, she employed a naïve folk art style to explore questions of identity, postcolonialism, gender, class and race in Mexican society. Her paintings often had strong autobiographical elements and mixed realism with fantasy. In addition to belonging to the post-revolutionary Mexicayotl movement, which sought to define a Mexican identity, Kahlo has been described as a surrealist or magical realist.Born to a German father and a mestiza mother, Kahlo spent most of her childhood and adult life at her family home in Coyoacán, La Casa Azul, now known and publicly accessible as the Frida Kahlo Museum. She was disabled by polio as a child. Until a traffic accident at age eighteen caused lifelong pain and medical problems, she had been a promising student headed for medical school. During her recovery, she returned to her childhood hobby of art with the idea of becoming an artist.",
+      "bio": "Frida Kahlo de Rivera (Spanish pronunciation: [ˈfɾiða ˈkalo]; born Magdalena Carmen Frida Kahlo y Calderón; 6 July 1907 – 13 July 1954) was a Mexican artist who painted many portraits, self-portraits and works inspired by the nature and artifacts of Mexico. Inspired by the country's popular culture, she employed a naïve folk art style to explore questions of identity, postcolonialism, gender, class and race in Mexican society. Her paintings often had strong autobiographical elements and mixed realism with fantasy. In addition to belonging to the post-revolutionary Mexicayotl movement, which sought to define a Mexican identity, Kahlo has been described as a surrealist or magical realist.Born to a German father and a mestiza mother, Kahlo spent most of her childhood and adult life at her family home in Coyoacán, La Casa Azul, now known and publicly accessible as the Frida Kahlo Museum. She was disabled by polio as a child. Until a traffic accident at age eighteen caused lifelong pain and medical problems, she had been a promising student headed for medical school. During her recovery, she returned to her childhood hobby of art with the idea of becoming an artist.",
       "wikipedia": "http://en.wikipedia.org/wiki/Frida_Kahlo",
       "paintings": 120
     },
@@ -233,36 +233,30 @@ function getArtistByIndex(array, index) {
 
   
 console.log(getArtistByIndex(artists, 0))
-  
-  /**
 
 
 /* Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
+var arrayLength = artists.length;
+var out = []
 
-
-
-function get20s(n1, n2) {
-  let lotsA = [];
-for (i = 0; i <= artists.length-1; i++) {
-  if (artists[i].years < n1 && artists[i].years < n2){
-    return lotsA.push(artists[i].name);
+function get20s(x, y) {
+  for (var i = 0; i < arrayLength; i++) {
+      let artist = artists[i];
+      let years = artist['years']
+      years = years.split(" - ")
+      let born = years[0]
+      let died = years[1]
+      if (born >= x && died <= y){
+        out.push(artist['name'])
+      }
+  } 
+  return out
   }
-  return lotsA
-}
-console.log(lotsA);
-}
+  console.log(get20s(1900, 2000))
+  
 
-function lotsofArt(array) {
-  let lots = [];
-for (i = 0; i <= array.length-1; i++) {
-  if(array[i].paintings =100){
-    lots.push(array[i].name);
-  }
-  return lots
-}
-console.log(lots);
-}
+  /* Code here */
 
 
 
@@ -282,17 +276,6 @@ function removeArtist(array, num) {
   console.log(array)
 
 
-
-
-
-    /* code here */
-  }
-
-
-    /* code here */
-
-  
- 
 
 /**
 /* Task 6: Create a function called `addArtist` that can accept an object of information and add it to the artists array. Then, add a 21st artist to the array (you) with custom information!👩‍🎨👨‍🎨
@@ -323,21 +306,18 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-
-  function lotsofArt(array) {
-    let lots = [];
-  for (i = 0; i <= array.length-1; i++) {
-    if(array[i].paintings > 100){
-      lots.push(array[i].name);
-    }
-    return lots
+function lotsofArt(array) {
+  let lots = [];
+for (i = 0; i <= array.length-1; i++) {
+  if(array[i].paintings > 100){
+    lots.push(array[i].name);
   }
-  console.log(lots);
-  }
+  return lots
+}
+console.log(lots);
+}
 
-
-
-
+}
 
 // 🎨🎨 STRETCH 🎨🎨//
 
